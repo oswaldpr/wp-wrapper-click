@@ -12,8 +12,17 @@
     });
 
     function triggerClick(e, $this) {
-        e.preventDefault();
-        const $thisWrapper = $this.closest($wrapperSelector)
-        $thisWrapper.find(linkDirectWrapperSelector + ' a').click();
+        const isLink = e.target ? e.target.nodeName.toLowerCase() === 'a' : false;
+        if(!isLink){
+            const $thisWrapper = $this.closest($wrapperSelector)
+            const link = $thisWrapper.find(linkDirectWrapperSelector + ' a');
+            const url = link.attr('href');
+            const targetBlank = link.attr('target') === "_blank";
+            if(targetBlank){
+                window.open(url, '_blank').focus();
+            } else {
+                window.location.href = url;
+            }
+        }
     }
 }(jQuery));
