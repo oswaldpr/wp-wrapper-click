@@ -24,5 +24,6 @@ function loadScripts() {
     if (!wp_script_is( 'jquery', 'enqueued' )) {
         wp_enqueue_script( 'jquery', "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" , array(), true, true );
     }
+    wp_enqueue_style(PLUGIN_SLUG . '_style', PLUGIN_DIR . '/' . PLUGIN_SLUG . '.css',false);
     wp_enqueue_script(PLUGIN_SLUG . '_js', PLUGIN_DIR . '/' . PLUGIN_SLUG . '.js', array('jquery'), null, true );
 }
